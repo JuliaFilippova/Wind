@@ -1,18 +1,22 @@
-function openCity(evt, citySlider) {
-  let i, tabslider, tablinks;
-  tabslider = document.getElementsByClassName("window-slider_tab");
-  for (i = 0; i < tabslider.length; i++) {
-    tabslider[i].style.display = "none";
+function openSlider(evt, cityName) {
+  let i, tabcontent, tablinks;
+  tabcontent = document.getElementsByClassName("window-slider_tab");
+  for (i = 0; i < tabcontent.length; i++) {
+    tabcontent[i].style.display = "none";
   }
   tablinks = document.getElementsByClassName("window-tabs__link");
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(citySlider).style.display = "block";
+  document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+window.onload = () => {
+    document.getElementById('window-slider_one').style.display = 'block';
+    document.getElementById('tabRehau').style.display = 'block'
+}
 
-function openCity(evt, cityPopular) {
+function openProduct(evt, cityName) {
   let i, tabcontent, tablinks;
   tabcontent = document.getElementsByClassName("product-list");
   for (i = 0; i < tabcontent.length; i++) {
@@ -22,9 +26,27 @@ function openCity(evt, cityPopular) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(cityPopular).style.display = "block";
+  document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
+
+$(document).ready(function() {
+    $('.faq-list__question').click(function() {
+      $('.faq-list__question').not(this).children('.faq-open').removeClass('active');
+      $(this).children('.faq-open').toggleClass("active");
+
+        if ($(this).parent().is('.faq_open')) {
+            $(this).closest('.faq-list__item').find('.faqDropdown').slideUp();
+            $(this).closest('.faq-list__item').removeClass('faq_open');
+        } else {
+            $('.faqDropdown').slideUp();
+            $('.faq-list__item').removeClass('faq_open');
+            $(this).closest('.faq-list__item').find('.faqDropdown').slideDown();
+            $(this).closest('.faq-list__item').addClass('faq_open');
+        }
+
+    }); 
+});
 
 $(function () {
 //SLIDER SWIPER
@@ -54,24 +76,3 @@ $(function () {
     });
   };
 });
-
-$(document).ready(function() {
-    $('.faq-list__question').click(function() {
-
-        if ($(this).parent().is('.faq_open')) {
-            $(this).closest('.faq-list__item').find('.faqDropdown').slideUp();
-            $(this).closest('.faq-list__item').removeClass('faq_open');
-        } else {
-            $('.faqDropdown').slideUp();
-            $('.faq-list__item').removeClass('faq_open');
-            $(this).closest('.faq-list__item').find('.faqDropdown').slideDown();
-            $(this).closest('.faq-list__item').addClass('faq_open');
-        }
-
-    });
-
-    
-});
-$(".faq-open").on("click", function () {
-        $(this).toggleClass("active");
-      });

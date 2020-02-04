@@ -74,9 +74,6 @@ button:focus {
 	border: none;
 }
 /*navbar*/
-.nav-head {
-
-}
 .navbar {
 	padding: 0;
 	display: flex;
@@ -248,9 +245,6 @@ h1.offer-head__title {
 }
 
 /*product-popular*/
-.product-popular {
-
-}
 .pagination-product {
 	margin: 70px 0 74px;
 }
@@ -847,7 +841,7 @@ h1.offer-head__title {
 .faq-open.active:after {
 	transform: rotate(-45deg);
 }
-#faqDropdown {
+.faqDropdown {
 	padding: 35px 0;
 	display: none;
 	font-size: 18px;
